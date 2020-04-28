@@ -16,7 +16,13 @@
 body{
     background: url(../asset/fondo.jpg) repeat;
 }
- 
+
+.btn{
+
+width: 220px;
+height: 220px;
+
+}
 
 
 

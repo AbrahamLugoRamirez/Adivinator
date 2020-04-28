@@ -1,4 +1,5 @@
 
+
 console.log("Conect")
 function validar(){
 var num = document.getElementById("number").value;
@@ -73,6 +74,10 @@ function mitadd(){
             showConfirmButton: false,
             timer: 1500
           })
+
+
+
+          
 
         }else{
             Swal.fire({
