@@ -16,12 +16,11 @@
 body{
     background: url(../asset/fondo.jpg) repeat;
 }
+.bto{
 
-.btn{
-
-width: 220px;
-height: 220px;
-
+    width: 220px;
+    height: 220px;
+    
 }
 
 

@@ -10,55 +10,212 @@
     <script type="text/javascript" src="js/script.js"></script>    
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>   
     <title>Hello, world!</title>
   </head>
   <body>
+
+    <button type="button" id="button">Acción</button>
+    <button type="button" id="show">Mostrar botón acción</button>
+    <button type="button" id="hide">Ocultar botón acción</button>
+    <script>
+      $(function(){
+        $('#h1').click(function(){
+          $('#button').show();
+        });
+        $('#hide').click(function(){
+	      
+        });
+        
+      })
+    </script>
 
         
       <form class="">  
         <div align="center" class="sign">
           <h3 >Init</h3 >  
-            <div class="container">
-                <div class="row">
+            
+
+              <div class="container">
+                <div class="row row-cols-3">
                   <div class="col">
-                    <button type="button" class="btn btn-primary" id="h1" onclick="he('h1');">1</button>
+                    <button type="button" class="btn btn-primary bto" id="h1" onclick="he('h1');">1</button>
                   </div>
                   <div class="col">
-                    <button type="button" class="btn btn-success" id="h2" onclick="he('h2');">2</button>
+                    <button type="button" class="btn btn-success bto" id="h2" onclick="he('h2');">2</button>
                   </div>
                   <div class="col">
-                    <button type="button" class="btn btn-warning" id="h3" onclick="he('h3');">3</button>
+                    <button type="button" class="btn btn-warning bto" id="h3" onclick="he('h3');">3</button>
                   </div>
-                </div>
-                <div class="row">
+                
+                
                   <div class="col">
-                    <button type="button" class="btn btn-success" id="h4" onclick="he('h4');">4</button>
-                  </div>
-                  <div class="col">
-                    <button type="button" class="btn btn-warning" id="h5" onclick="he('h5');">5</button>
+                    <button type="button" class="btn btn-success bto" id="h4" onclick="he('h4');">4</button>
                   </div>
                   <div class="col">
-                    <button type="button" class="btn btn-danger" id="h6" onclick="he('h6');">6</button>
+                    <button type="button" class="btn btn-warning bto" id="h5" onclick="he('h5');">5</button>
                   </div>
-                </div>
-                <div class="row">
+                  <div class="col">
+                    <button type="button" class="btn btn-danger bto" id="h6" onclick="he('h6');">6</button>
+                  </div>
+                
                     <div class="col">
-                      <button type="button" class="btn btn-warning"id="h7" onclick="he('h7');">7</button>
+                      <button type="button" class="btn btn-warning bto"id="h7" onclick="he('h7');">7</button>
                     </div>
                     <div class="col">
-                      <button type="button" class="btn btn-success" id="h8" onclick="he('h8');">8</button>
+                      <button type="button" class="btn btn-success bto" id="h8" onclick="he('h8');">8</button>
                     </div>
                     <div class="col">
-                        <button type="button" class="btn btn-outline-primary" id="h" onclick="he('h');">*</button>
+                        <button type="button" class="btn btn-outline-primary bto" id="h" onclick="he('h');">*</button>
                       </div>
-                    
-                  </div>
-              </div>
+                    </div>
+                  
+                </div>
+              </div>            
         
     </form>
     <script>
         document.getElementById("h").disabled=true;
+        
+
+console.log("Conect")
+function validar(){
+var num = document.getElementById("number").value;
+localStorage.setItem("num", num)
+window.location = "../game.html"
+}
+var cont = 0;
+var val = false;
+var vall = false;
+
+function he(opc){
+    if(vall == true){
+        otras(opc);
+    }
+    if(val == true){
+        otra(opc);
+    }
+    if(cont < 4){
+        var bt = opc;
+        console.log(opc)
+        document.getElementById(opc).disabled=true;
+        cont += 1;
+        mitad();
+    }
+    
+    console.log(cont);    
+}
+console.log(cont)
+
+function mitad(){
+    if(cont == 4){
+        var a = localStorage.getItem("num");       
+        if(document.getElementById("h"+a).disabled == true){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se mantendran los que selecionaste',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }else{
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Se eliminaran los selecionados, escoge dos mas',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              val = true;
+              console.log("ejjad")
+              for (var i = 1; i < 9; i++){
+                var n = "h"+i;
+                if(document.getElementById(n).disabled == true){
+                  $('#'+n).hide();
+                }
+
+                
+
+                
+              }
+             
+        }       
+    }
+}
+function otra(opc){
+    if(cont < 6){
+        var bt = opc;
+        console.log(opc)
+        document.getElementById(opc).disabled=true;
+        cont += 1;
+        mitadd();        
+    }
+}
+
+function mitadd(){
+    if(cont == 6){
+        var a = localStorage.getItem("num");       
+        if(document.getElementById("h"+a).disabled == true){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Se mantendran los que selecionaste',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+
+
+          
+
+        }else{
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Se eliminaran los selecionados, escoge dos mas',
+                showConfirmButton: false,
+                timer: 1500
+              }) 
+              vall = true;            
+
+        }
+       
+    }
+}
+function otras(opc){
+    if(cont < 7){
+        var bt = opc;
+        console.log(opc)
+        document.getElementById(opc).disabled=true;
+        cont += 1;
+        final();      
+    }
+}
+
+function final(){
+    var a = localStorage.getItem("num");       
+        if(document.getElementById("h"+a).disabled == true){
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'El numero es el que selecionaste: ' + a,
+            showConfirmButton: false,
+            timer: 1500
+          })
+
+        }else{
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'El numero es el ' + a,
+                showConfirmButton: false,
+                timer: 1500
+              }) 
+              vall = true;
+
+
+            }
+        }
     </script>
    
     
